@@ -12,7 +12,7 @@ const MnyMng = () => {
         total_amount: 0
     };
     const [formValue, setFormValue] = useState(() => {
-        const savedValues = localStorage.getItem("formValue");
+        const savedValues = (typeof window !== 'undefined') && localStorage.getItem("formValue");
         return savedValues ? JSON.parse(savedValues) : initValue;
     });
 

@@ -1,4 +1,5 @@
 'use client'
+import Link from "next/link";
 import React, { useEffect, useState } from "react"
 
 const MnyMng = () => {
@@ -71,7 +72,7 @@ const MnyMng = () => {
 
     return (
         <div className="flex md:flex-row flex-col gap-3 items-stretch content-center justify-center md:h-screen bg-[#0f172a] text-slate-200 p-3">
-            <div className="rounded-lg bg-[#1e293b] p-4 shadow-lg">
+            <div className="flex flex-col justify-between rounded-lg bg-[#1e293b] p-4 shadow-lg">
                 <div className="flex flex-col gap-3">
                     <div className="w-full">
                         <label
@@ -160,6 +161,8 @@ const MnyMng = () => {
                         Clear
                     </button>
                 </div>
+                <div>
+                    <Link className="text-blue-400 text-sm" href='https://web.telegram.org/k/#@Manohar91' target='_blank'>Contact Me</Link></div>
             </div>
             {calData.length > 0 &&
                 <div className="overflow-y-auto rounded-lg bg-[#1e293b] shadow-lg">

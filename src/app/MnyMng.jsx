@@ -194,12 +194,12 @@ const MnyMng = () => {
                                             setCopiedIndex(null);
                                         }, 1000);
                                     }}
-                                >₹ {formValue.start_amount}
+                                > {formValue.start_amount}
                                     <span className="left-10 text-green-500">
                                         {copiedIndex === 10001 ? ' 📋copied!' : ''}
                                     </span>
                                 </td>
-                                <td className="p-4">₹ {formValue.start_amount}</td>
+                                <td className="p-4"> {formValue.start_amount}</td>
                                 <td className="p-4">{showPositiveOrZero(formValue.total_amount - formValue.start_amount)}</td>
                             </tr>
                             {calData.map((data, index) => (
@@ -211,22 +211,22 @@ const MnyMng = () => {
                                         className="p-4 whitespace-nowrap cursor-pointer"
                                         title="click to copy"
                                         onClick={() => {
-                                            navigator.clipboard.writeText((data.amount).toFixed(0));
+                                            navigator.clipboard.writeText((data.amount).toFixed(2));
                                             setCopiedIndex(index);
                                             setTimeout(() => {
                                                 setCopiedIndex(null);
                                             }, 1000);
                                         }}>
-                                        ₹ {(data.amount).toFixed(0)}
+                                         {(data.amount).toFixed(2)}
                                         <span className="left-10 text-green-500">
                                             {copiedIndex === index ? ' 📋copied!' : ''}
                                         </span>
                                     </td>
                                     <td className="p-4 whitespace-nowrap">
-                                        ₹ {Number(data.usedAmount).toFixed(0)}
+                                        {Number(data.usedAmount).toFixed(2)}
                                     </td>
                                     <td className="p-4 whitespace-nowrap">
-                                        {showPositiveOrZero(data.total_amount)?.toFixed(0)}
+                                        {showPositiveOrZero(data.total_amount)?.toFixed(2)}
                                     </td>
                                 </tr>
                             ))}

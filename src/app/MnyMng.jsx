@@ -48,7 +48,7 @@ const MnyMng = () => {
         let totalLoss = 0;
         let totalUsed = 0;
 
-        for (let i = 0; i < step; i++) {
+        for (let i = 0;i < step;i++) {
             totalLoss += amount;
             amount = ((profit_percent + 100) * totalLoss) / percent;
             if (i == 0) {
@@ -119,7 +119,11 @@ const MnyMng = () => {
                             placeholder="0"
                             className="block w-full rounded-md border-slate-700 bg-[#334155] px-3 py-2 text-white placeholder-slate-400 outline-none"
                             value={formValue.step}
-                            onChange={(e) => handleChange(e)}
+                            onChange={(e) => {
+                                if (+e.target.value <= 20) {
+                                    handleChange(e);
+                                }
+                            }}
                         />
                     </div>
                     <div className="w-full">
@@ -176,7 +180,7 @@ const MnyMng = () => {
                                     next amount
                                 </th>
                                 <th scope="col" className="p-4 w-[200px] text-start">
-                                    require amount
+                                    Used amount
                                 </th>
                                 <th scope="col" className="p-4 w-[200px] text-start">
                                     Remaining amount
@@ -211,22 +215,22 @@ const MnyMng = () => {
                                         className="p-4 whitespace-nowrap cursor-pointer"
                                         title="click to copy"
                                         onClick={() => {
-                                            navigator.clipboard.writeText((data.amount).toFixed(2));
+                                            navigator.clipboard.writeText((data.amount).toFixed(0));
                                             setCopiedIndex(index);
                                             setTimeout(() => {
                                                 setCopiedIndex(null);
                                             }, 1000);
                                         }}>
-                                         {(data.amount).toFixed(2)}
+                                        {(data.amount).toFixed(0)}
                                         <span className="left-10 text-green-500">
                                             {copiedIndex === index ? ' 📋copied!' : ''}
                                         </span>
                                     </td>
                                     <td className="p-4 whitespace-nowrap">
-                                        {Number(data.usedAmount).toFixed(2)}
+                                        {Number(data.usedAmount).toFixed(0)}
                                     </td>
                                     <td className="p-4 whitespace-nowrap">
-                                        {showPositiveOrZero(data.total_amount)?.toFixed(2)}
+                                        {showPositiveOrZero(data.total_amount)?.toFixed(0)}
                                     </td>
                                 </tr>
                             ))}
